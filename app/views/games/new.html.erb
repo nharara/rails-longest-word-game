@@ -1,0 +1,19 @@
+
+<div class="container">
+  <h1>New Game</h1>
+  <div class="row justify-content-center">
+    <% @letters.each do |letter| %>
+    <div class="col-1 p-3 m-1 bg-primary text-white text-center rounded shadow"><%= letter.capitalize %></div>
+    <% end %>
+  <form action="score" method="POST" data-turbo="false">
+    <!-- ... -->
+    <label for="ask-for-word">What's the longest word you can find?</label>
+    <div class="input-group">
+      <input type="text" id="ask-for-word" name="query" class='form-control'>
+      <input type="submit" value="Play" class="btn btn-primary">
+    </div>
+    <%= hidden_field_tag :letters, @letters %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+  </div>
+</div>
