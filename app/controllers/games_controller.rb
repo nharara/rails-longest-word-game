@@ -16,7 +16,7 @@ class GamesController < ApplicationController
 
     @valid = @user_guess.split('').all? { |letter| @saved_letters.count(letter) >= @user_guess.count(letter) }
 
-    # if @valid
+    # if @vali
     #   @message = "Can make that word"
     # else
     #   @message = "Cannot make that word out of the letters"
@@ -25,10 +25,10 @@ class GamesController < ApplicationController
     read_url = URI.open(url).read
     @okay = JSON.parse(read_url)
 
-    if @valid && @okay['found'] == 'true'
-      @result = "Congratulations! #{@user_guess} can be made out of #{@saved_letters}"
-    elsif @valid && @okay['found'] == 'false'
-      @result = "#{@user_guess} is a word but it is not in the dictionary."
+    if @valid && @okay['found'] == true
+      @result = "Congratulations! '#{@user_guess}.capitalize' can be made out of these letters"
+    elsif @valid && @okay['found'] == false
+      @result = "#{@user_guess} is a word but can't be made out of these letters."
     else
       @result = "#{@user_guess} is not a word"
     end
