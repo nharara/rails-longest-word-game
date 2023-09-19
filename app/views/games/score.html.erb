@@ -1,4 +1,9 @@
 <div class="container">
   <h1>Result</h1>
   <div><%= @result %></div>
+  <div class="btn btn-outline-primary">
+    <%= link_to new_path do %>
+      Play Again <i class="fa-solid fa-repeat"></i>
+    <% end %>
+  </div>
 </div>
