@@ -27,14 +27,16 @@ class GamesController < ApplicationController
 
     if valid?
       if @okay['found'] == true
-        @result = "Congratulations! '#{@user_guess}' can be made out of these letters 🙏"
+        @result = "Congratulations! <strong>#{@user_guess}</strong> can be made out of these letters 🙏"
       else
-        @result = "#{@user_guess} is not an English word 😅"
+        @result = "<strong>#{@user_guess}</strong> is not an English word 😅"
       end
     else
-      @result = "#{@user_guess} can't be made out of these letters 😔"
+      @result = "<strong>#{@user_guess}</strong> can't be made out of these letters 😔"
     end
   end
+
+  private
 
   def valid?
     @user_guess.split('').all? { |letter| @saved_letters.count(letter) >= @user_guess.count(letter) }
